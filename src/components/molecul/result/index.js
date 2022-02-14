@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Col, ListGroup, Row, Badge, Button } from 'react-bootstrap';
+import { Col, ListGroup, Row, Button } from 'react-bootstrap';
 import Axios from 'axios';
 import { API_URL } from '../../../utils/config';
 import { TotalBayar } from '../../atom';
@@ -53,7 +53,6 @@ export default class Result extends Component {
 
     Axios.put(API_URL+"/keranjangs/"+this.state.detailKeranjang.id, newData)
     .then(res => {
-      this.getListProduct();
       const Toast = Swal.mixin({
         toast: true,
         position: 'top-end',
@@ -161,7 +160,6 @@ export default class Result extends Component {
                   jumlah={this.state.jumlah}
                   handleSubmit={this.handleSubmit}
                   handleDelete={this.handleDelete}
-                  getListProduct={this.getListProduct}
                   {...this.state}
                 />
             </ListGroup>
