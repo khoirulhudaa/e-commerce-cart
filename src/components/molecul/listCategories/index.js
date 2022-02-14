@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { Col, ListGroup, ListGroupItem } from 'react-bootstrap';
-import Axios from 'axios';
-import { API_URL } from '../../../utils/config';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHotdog, faCoffee, faCookie } from '@fortawesome/free-solid-svg-icons'
 
@@ -13,17 +11,6 @@ export default class ListCategories extends Component {
        categories: []
     };
   };
-
-componentDidMount() {
-  Axios.get(API_URL+"/categories")
-    .then(res => {
-      const categories = res.data;
-      this.setState({categories})
-    })
-    .catch(err => {
-      console.log(err.data)
-  })
-}
 
   render() {
     return (
