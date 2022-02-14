@@ -26,42 +26,11 @@ export default class Homepage extends Component {
           this.setState({menuss})
         })
         .catch(err => {
-          console.log(err.data)
         })
         
         this.getListProducts();
         setTimeout(() => {
-          console.log('data barang:',this.state.menuss)
         }, 2000)
-    }
-
-    getListProducts = () => {
-      Axios.get(API_URL+"/keranjangs")
-      .then(res => {
-        const keranjang = res.data;
-        this.setState({ keranjang })
-      })
-      .catch(err => {
-        console.log(err.data)
-      })
-    }
-    
-    changeCategory = (value) => {
-      this.setState({
-        categoryDiPilih: value,
-        menuss: []
-      })
-    
-      // Axios.get(API_URL+"/products?category.nama="+value)
-      Axios.get(API_URL+"/products?category="+value)
-      .then(res => {
-        this.getListProducts();
-        const menuss = res.data;
-        this.setState({menuss})
-      })
-      .catch(err => {
-        console.log(err.data)
-      })
     }
     
     masukKeranjangs = (e) => {
@@ -75,29 +44,18 @@ export default class Homepage extends Component {
           keranjang: [...this.state.keranjang, cart]
         })
 
-        console.log('keranjang:', this.state.keranjang)
-      
-        // Axios.post(API_URL+"product/keranjangs", cart)
-        //   .then(res => {
-        //     window.location.reload();
-        //     const Toast = Swal.mixin({
-        //       toast: true,
-        //       position: 'top-end',
-        //       showConfirmButton: false,
-        //       timer: 1500,
-        //       timerProgressBar: true,
-        //     })
-            
-        //     Toast.fire({
-        //       icon: 'success',
-        //       title: 'Masuk keranjang'
-        //     })
-
-        //     window.location.reload()
-        //   })
-        //   .catch(err => {
-        //     console.log(err.data)
-        //   })
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 1500,
+          timerProgressBar: true,
+        })
+        
+        Toast.fire({
+          icon: 'success',
+          title: 'Masuk keranjang'
+        })
     }
 
     

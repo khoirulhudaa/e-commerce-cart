@@ -25,25 +25,11 @@ export default class Result extends Component {
   };
   
   componentDidMount() {
-    this.getListProduct();
-    console.log(this.props.keranjang)
     setInterval(() => {
       this.setState({
         keranjang: this.props.keranjang
       })
     }, 200)
-  }
-
-
-  getListProduct = () => {
-    Axios.get(API_URL+"/keranjang")
-    .then(res => {
-      const keranjang = res.data;
-      this.setState({ keranjang })
-    })
-    .catch(err => {
-      console.log(err.data)
-    })
   }
   
   handleshow = (showModal) => {
@@ -53,11 +39,9 @@ export default class Result extends Component {
         total_harga: showModal.total_harga,
         jumlah: showModal.value
     })
-    console.log('modal data :', showModal)
   }
 
   handleSubmit = (v) => {
-    console.log('keranjang: ', this.state.detailKeranjang)
     v.preventDefault()
 
     const newData = {
@@ -100,7 +84,6 @@ export default class Result extends Component {
         icon: 'warning',
         title: 'gagal mengubah'
       })
-      console.log(err)
     })
   }
 
