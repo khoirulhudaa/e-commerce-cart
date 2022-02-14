@@ -28,7 +28,6 @@ export default class Homepage extends Component {
         .catch(err => {
         })
         
-        this.getListProducts();
         setTimeout(() => {
         }, 2000)
     }
